@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediamozak | Growth & Digital Marketing Agency</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1e2836',
+                            slate: '#111827',
+                            gold: '#c5a880',
+                            goldHover: '#b3956d',
+                            accent: '#f4ece1',
+                            cardBg: '#1f2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #e6d3ba 0%, #c5a880 50%, #997b53 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg-gradient {
+            background: linear-gradient(135deg, #c5a880 0%, #a88a61 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #c5a880;
+        }
+    </style>
+    <!-- Dynamic Injected Scripts Container -->
+    <div id="dynamic-head-scripts"></div>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col selection:bg-brand-gold selection:text-gray-900">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-header border-b border-gray-800 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                <div id="nav-logo-container" class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center p-1 group-hover:border-brand-gold transition-colors">
+                    <img id="nav-logo-img" src="https://placehold.co/100x100/1e2836/c5a880?text=MM" alt="Mediamozak" class="max-h-full max-w-full object-contain rounded">
+                </div>
+                <div>
+                    <span id="nav-brand-name" class="font-bold text-xl tracking-tight text-white group-hover:text-brand-gold transition-colors block leading-none">Mediamozak</span>
+                    <span class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Marketing Agency</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-6 text-sm font-medium">
+                <a href="#home" onclick="navigateTo('home')" class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors" data-page="home">Home</a>
+                <a href="#about" onclick="navigateTo('about')" class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors" data-page="about">About Us</a>
+                
+                <!-- Services Dropdown -->
+                <div class="relative group">
+                    <button class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors flex items-center gap-1" data-page="services">
+                        <span>Services</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div id="nav-services-dropdown" class="bg-gray-900 border border-gray-800 rounded-xl shadow-2xl p-2 space-y-1">
+                            <!-- Dynamic Services Links injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#blog" onclick="navigateTo('blog')" class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors" data-page="blog">Blog</a>
+                <a href="#faqs" onclick="navigateTo('faqs')" class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors" data-page="faqs">FAQs</a>
+                <a href="#contact" onclick="navigateTo('contact')" class="nav-item text-gray-300 hover:text-brand-gold px-3 py-2 rounded-md transition-colors" data-page="contact">Contact Us</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#contact" onclick="navigateTo('contact')" class="gold-bg-gradient text-gray-950 font-semibold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-all shadow-lg shadow-brand-gold/10 flex items-center gap-1.5">
+                    <span>Get Consultation</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-2">
+                <i data-lucide="menu" id="mobile-menu-icon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="navigateTo('home'); toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brand-gold font-medium">Home</a>
+            <a href="#about" onclick="navigateTo('about'); toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brand-gold font-medium">About Us</a>
+            <div class="py-2 border-y border-gray-800/80 my-1">
+                <span class="text-xs uppercase font-bold text-gray-500 tracking-wider">Our Services</span>
+                <div id="mobile-services-list" class="mt-2 space-y-1 pl-2">
+                    <!-- Mobile services links injected here -->
+                </div>
+            </div>
+            <a href="#blog" onclick="navigateTo('blog'); toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brand-gold font-medium">Blog</a>
+            <a href="#faqs" onclick="navigateTo('faqs'); toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brand-gold font-medium">FAQs</a>
+            <a href="#contact" onclick="navigateTo('contact'); toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brand-gold font-medium">Contact Us</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openAdminNewTab(); toggleMobileMenu()" class="w-full text-center bg-gray-800 hover:bg-gray-700 text-gray-200 font-medium py-2.5 rounded-lg flex items-center justify-center gap-2">
+                    <i data-lucide="shield" class="w-4 h-4 text-brand-gold"></i>
+                    <span>Access CMS Panel</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT VIEW AREA -->
+    <main id="main-app" class="flex-grow">
+        <!-- Views rendered dynamically via JavaScript -->
+    </main>
+
+    <!-- Floating WhatsApp Widget -->
+    <div id="whatsapp-floating-btn" class="fixed bottom-6 right-6 z-30">
+        <!-- Rendered via JS based on state -->
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800">
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center p-1">
+                            <img id="footer-logo-img" src="https://placehold.co/100x100/1e2836/c5a880?text=MM" alt="Mediamozak" class="max-h-full max-w-full object-contain rounded">
+                        </div>
+                        <span id="footer-brand-name" class="font-bold text-lg text-white">Mediamozak</span>
+                    </div>
+                    <p id="footer-about-text" class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+                        Data-driven marketing, precision web development, and performance scaling agency empowering growth-ready brands.
+                    </p>
+                    <div id="footer-social-links" class="flex items-center gap-3 pt-2">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold text-base mb-4">Quick Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" onclick="navigateTo('home')" class="hover:text-brand-gold transition-colors">Home</a></li>
+                        <li><a href="#about" onclick="navigateTo('about')" class="hover:text-brand-gold transition-colors">About Agency</a></li>
+                        <li><a href="#blog" onclick="navigateTo('blog')" class="hover:text-brand-gold transition-colors">Latest Insights</a></li>
+                        <li><a href="#faqs" onclick="navigateTo('faqs')" class="hover:text-brand-gold transition-colors">Frequently Asked FAQs</a></li>
+                        <li><a href="#contact" onclick="navigateTo('contact')" class="hover:text-brand-gold transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-white font-semibold text-base mb-4">Services</h4>
+                    <ul id="footer-services-list" class="space-y-2 text-xs sm:text-sm">
+                        <!-- Dynamic Footer Services -->
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Legal -->
+                <div>
+                    <h4 class="text-white font-semibold text-base mb-4">Legal & Compliance</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#privacy" onclick="navigateTo('privacy')" class="hover:text-brand-gold transition-colors">Privacy Policy</a></li>
+                        <li><a href="#terms" onclick="navigateTo('terms')" class="hover:text-brand-gold transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; <span id="current-year"></span> Mediamozak Marketing Agency. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <!-- Opens admin login in a separate tab -->
+                    <button onclick="openAdminNewTab()" class="hover:text-brand-gold transition-colors flex items-center gap-1">
+                        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                        <span>CMS Admin Panel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CMS LOGIN MODAL (Opens in Separate Tab via ?admin=true) -->
+    <div id="login-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-6">
+            <div class="text-center">
+                <div class="inline-flex p-3 bg-brand-gold/10 text-brand-gold rounded-xl border border-brand-gold/30 mb-3">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">CMS Admin Login</h2>
+                <p class="text-xs text-gray-400 mt-1">Please enter your credentials to access the admin portal.</p>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form-element" onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Username</label>
+                    <input type="text" id="admin-user" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="admin">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Password</label>
+                    <input type="password" id="admin-pass" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="••••••••">
+                </div>
+                <div id="login-error" class="text-xs text-rose-500 hidden font-medium text-center">Invalid username or password.</div>
+                
+                <div class="flex items-center justify-between text-xs pt-1">
+                    <button type="button" onclick="showForgotPasswordView(true)" class="text-brand-gold hover:underline">Forgot Password?</button>
+                </div>
+
+                <button type="submit" class="w-full gold-bg-gradient text-gray-950 font-bold py-2.5 rounded-lg text-xs hover:opacity-90 transition-all">
+                    Login to CMS
+                </button>
+            </form>
+
+            <!-- Forgot Password Recovery View -->
+            <div id="forgot-password-view" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Admin Email Address</label>
+                    <input type="email" id="recovery-email" value="mediamozak@gmail.com" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="mediamozak@gmail.com" required>
+                    <p class="text-[11px] text-gray-400 mt-1">Enter your registered recovery email to receive reset instructions.</p>
+                </div>
+                <div id="recovery-msg" class="text-xs text-emerald-400 hidden font-medium text-center">Password reset instructions sent to mediamozak@gmail.com! Default password is: password123</div>
+                <div id="recovery-error" class="text-xs text-rose-500 hidden font-medium text-center">Email not recognized. Use mediamozak@gmail.com</div>
+                <div class="flex gap-2">
+                    <button type="button" onclick="showForgotPasswordView(false)" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2.5 rounded-lg text-xs transition-all">Back to Login</button>
+                    <button type="button" onclick="handlePasswordRecovery(event)" class="w-1/2 gold-bg-gradient text-gray-950 font-bold py-2.5 rounded-lg text-xs hover:opacity-90 transition-all">Send Reset Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CMS ADMIN MODAL DASHBOARD -->
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-6xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden my-auto">
+            
+            <!-- CMS Header -->
+            <div class="bg-gray-950 px-6 py-4 border-b border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-brand-gold/10 border border-brand-gold/30 rounded-lg text-brand-gold">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span>Mediamozak CMS Studio</span>
+                            <span class="text-xs bg-brand-gold/20 text-brand-gold px-2 py-0.5 rounded-full font-semibold border border-brand-gold/30">v2.6</span>
+                        </h2>
+                        <p class="text-xs text-gray-400">Live content management, SEO tag injection, and site customizer</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleAdminModal(false)" class="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CMS Body (Sidebar Nav + Panel Tabs) -->
+            <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+                
+                <!-- CMS Sidebar Nav -->
+                <div class="w-full md:w-64 bg-gray-950/60 border-r border-gray-800 p-3 space-y-1 overflow-y-auto custom-scrollbar flex-shrink-0">
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider px-3 py-1">Settings & Security</div>
+                    <button onclick="switchAdminTab('security')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="security">
+                        <i data-lucide="key" class="w-4 h-4 text-rose-400"></i>
+                        <span>Security & Password</span>
+                    </button>
+                    <button onclick="switchAdminTab('seo')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="seo">
+                        <i data-lucide="search" class="w-4 h-4 text-emerald-400"></i>
+                        <span>SEO & Analytics Injection</span>
+                    </button>
+                    <button onclick="switchAdminTab('branding')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="branding">
+                        <i data-lucide="image" class="w-4 h-4 text-brand-gold"></i>
+                        <span>Logo & Favicon</span>
+                    </button>
+                    <button onclick="switchAdminTab('whatsapp')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="whatsapp">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-green-400"></i>
+                        <span>WhatsApp Chat Settings</span>
+                    </button>
+                    <button onclick="switchAdminTab('social')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="social">
+                        <i data-lucide="share-2" class="w-4 h-4 text-blue-400"></i>
+                        <span>Social Links</span>
+                    </button>
+                    <button onclick="switchAdminTab('leads')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="leads">
+                        <i data-lucide="inbox" class="w-4 h-4 text-amber-500"></i>
+                        <span>Lead Management</span>
+                    </button>
+
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider px-3 py-1 pt-3">Page Content</div>
+                    <button onclick="switchAdminTab('services')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="services">
+                        <i data-lucide="briefcase" class="w-4 h-4 text-amber-400"></i>
+                        <span>Services Manager</span>
+                    </button>
+                    <button onclick="switchAdminTab('blog')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="blog">
+                        <i data-lucide="file-text" class="w-4 h-4 text-purple-400"></i>
+                        <span>Blog Manager</span>
+                    </button>
+                    <button onclick="switchAdminTab('faqs')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="faqs">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-teal-400"></i>
+                        <span>FAQs Manager</span>
+                    </button>
+                    <button onclick="switchAdminTab('legal')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="legal">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+                        <span>Legal Pages Manager</span>
+                    </button>
+                    <button onclick="switchAdminTab('about')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="about">
+                        <i data-lucide="users" class="w-4 h-4 text-indigo-400"></i>
+                        <span>About Us Manager</span>
+                    </button>
+                    <button onclick="switchAdminTab('contact')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="contact">
+                        <i data-lucide="phone" class="w-4 h-4 text-rose-400"></i>
+                        <span>Contact Us Info</span>
+                    </button>
+                    <button onclick="switchAdminTab('images')" class="admin-tab-btn w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-2 text-gray-300 hover:bg-gray-800 transition-colors" data-tab="images">
+                        <i data-lucide="camera" class="w-4 h-4 text-sky-400"></i>
+                        <span>Page Banner Images</span>
+                    </button>
+                </div>
+
+                <!-- CMS Content Workspace Panel -->
+                <div id="admin-panel-content" class="flex-grow p-6 overflow-y-auto custom-scrollbar bg-gray-900">
+                    <!-- Dynamic CMS Forms injected here by switchAdminTab() -->
+                </div>
+            </div>
+
+            <!-- CMS Footer Controls -->
+            <div class="bg-gray-950 px-6 py-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    Changes auto-saved to Local Storage
+                </span>
+                <button onclick="resetDataToDefault()" class="text-rose-400 hover:text-rose-300 hover:underline">Reset All to Default Data</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification Toast Element -->
+    <div id="toast-msg" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-gray-900 border border-brand-gold text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300">
+        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+        <span id="toast-text" class="text-sm font-medium">Changes Saved Successfully!</span>
+    </div>
+
+    <script>
+        // Default Mock Data Structure
+        const DEFAULT_DATA = {
+            auth: {
+                username: "admin",
+                password: "password123",
+                email: "mediamozak@gmail.com"
+            },
+            legal: {
+                privacyTitle: "Privacy Policy",
+                privacyContent: "At Mediamozak, accessible from https://mediamozak.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Mediamozak and how we use it.\n\nIf you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at mediamozak@gmail.com.\n\nLog Files: Mediamozak follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.",
+                termsTitle: "Terms & Conditions",
+                termsContent: "Welcome to Mediamozak!\n\nThese terms and conditions outline the rules and regulations for the use of Mediamozak's Website, located at https://mediamozak.com.\n\nBy accessing this website we assume you accept these terms and conditions. Do not continue to use Mediamozak if you do not agree to take all of the terms and conditions stated on this page.\n\nLicense: Unless otherwise stated, Mediamozak and/or its licensors own the intellectual property rights for all material on Mediamozak. All intellectual property rights are reserved. You may access this from Mediamozak for your own personal use subjected to restrictions set in these terms and conditions."
+            },
+            branding: {
+                name: "Mediamozak",
+                tagline: "Marketing & Growth Agency",
+                logoUrl: "https://placehold.co/200x200/1e2836/c5a880?text=MM+Logo",
+                faviconUrl: "https://placehold.co/64x64/1e2836/c5a880?text=M"
+            },
+            seo: {
+                googleConsoleMeta: "google-site-verification=SAMPLE_VERIFICATION_TOKEN_12345",
+                ga4MeasurementId: "G-MEDIAMOZAK123",
+                metaPixelId: "PIXEL-1098273645",
+                globalTitle: "Mediamozak | Leading Performance Marketing & Web Development Agency",
+                globalKeywords: "web development services, social media marketing, performance marketing, e-com marketing, quick com marketing, lead generation, search engine optimization, mediamozak",
+                globalDescription: "Mediamozak is a full-service marketing agency offering Web Development, Performance Marketing, SEO, E-Commerce, Quick Commerce, and High-converting Lead Generation."
+            },
+            whatsapp: {
+                enabled: true,
+                number: "+919876543210",
+                message: "Hello Mediamozak Team! I would like to inquire about your marketing services."
+            },
+            socials: {
+                facebook: "https://facebook.com/mediamozak",
+                instagram: "https://instagram.com/mediamozak",
+                linkedin: "https://linkedin.com/company/mediamozak",
+                twitter: "https://x.com/mediamozak",
+                youtube: "https://youtube.com/@mediamozak"
+            },
+            leads: [],
+            contact: {
+                phone: "+91 98765 43210",
+                email: "mediamozak@gmail.com",
+                address: "Mediamozak Marketing HQ, Cyber Hub, Phase 2, DLF, India",
+                workingHours: "Monday - Saturday: 9:00 AM - 7:00 PM IST"
+            },
+            about: {
+                heading: "Empowering Brands with Data-Driven Growth Marketing & Web Solutions",
+                subheading: "At Mediamozak, we bridge performance art with marketing science to convert impressions into lasting client relationships and scaling sales.",
+                mission: "Our mission is simple: To equip digital-first brands with scalable digital infrastructure, hyper-targeted ad campaigns, and search supremacy.",
+                yearsExp: "8+",
+                campaignsDone: "450+",
+                revenueGenerated: "$25M+",
+                teamImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+            },
+            pageImages: {
+                homeBanner: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+                aboutBanner: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+                servicesBanner: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+                contactBanner: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1200&q=80",
+                faqsBanner: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80"
+            },
+            services: [
+                {
+                    id: "web-development-services",
+                    title: "Web Development Services",
+                    icon: "code",
+                    shortDesc: "High-performance, ultra-responsive websites and Web Applications custom tailored for high conversions.",
+                    fullContent: "Mediamozak builds enterprise-grade, SEO-ready web platforms with blazing fast speed, sleek UX, and robust mobile responsiveness. From landing pages to enterprise portals, we engineer digital hubs designed to turn visitors into buyers.",
+                    features: ["Custom React / HTML5 Architecture", "Full On-Page SEO Optimization", "Sub-second Page Load Speed", "Custom CMS Integration"],
+                    bannerImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "social-media-marketing-services",
+                    title: "Social Media Marketing Services",
+                    icon: "share-2",
+                    shortDesc: "Creative content, viral campaigns, and community management across Meta, Instagram, LinkedIn & TikTok.",
+                    fullContent: "Build an active, loyal brand community. Mediamozak designs viral visual campaigns, manages organic growth, and runs engagement strategies across Meta, Instagram, LinkedIn, and emerging platforms.",
+                    features: ["Content Calendar Strategy", "Short-Form Video Reels Creation", "Community Management", "Influencer Collaborations"],
+                    bannerImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "performance-marketing-services",
+                    title: "Performance Marketing Services",
+                    icon: "trending-up",
+                    shortDesc: "ROI-driven ad campaigns on Google Ads, Meta Ads, and TikTok with algorithmic budget optimization.",
+                    fullContent: "Stop burning ad budgets. Our performance specialists execute laser-targeted campaigns focusing on key metrics like ROAS, CAC, and LTV. We continually split-test ads to maximize revenue per ad dollar.",
+                    features: ["Google Ads & PPC Management", "Meta Pixel & Conversion API Setup", "A/B Dynamic Ad Creative Testing", "ROAS Optimization"],
+                    bannerImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "e-com-marketing",
+                    title: "E-com Marketing",
+                    icon: "shopping-bag",
+                    shortDesc: "End-to-end sales growth strategies for Shopify, WooCommerce, and custom e-commerce stores.",
+                    fullContent: "Scale your e-commerce store with structured retention and customer acquisition funnels. We optimize product pages, run dynamic remarketing ads, and set up automated email/SMS workflows.",
+                    features: ["Shopify Store CRO", "Dynamic Product Catalog Ads", "Abandoned Cart Automation Funnels", "Customer Retention Strategy"],
+                    bannerImage: "https://images.unsplash.com/photo-1556742049-0a674640c66d?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "quick-com-marketing",
+                    title: "Quick-com Marketing",
+                    icon: "zap",
+                    shortDesc: "Instant commerce visibility & promotion strategies for 10-minute delivery apps and local quick commerce.",
+                    fullContent: "Dominate quick commerce platforms (Blinkit, Zepto, Instamart). We run localized hyper-targeted geo-ads and in-app listing optimization to guarantee instant sales lifts for FMCG & consumer brands.",
+                    features: ["In-App Platform Banner Ads", "Hyper-local Micro Targeting", "Stock & Demand Surge Campaigning", "Quick Commerce CRO"],
+                    bannerImage: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "lead-generation-services",
+                    title: "Lead Generation Services",
+                    icon: "target",
+                    shortDesc: "High-intent B2B and B2C qualified lead funnels engineered for high closing rates.",
+                    fullContent: "Fill your sales pipeline with verified, ready-to-buy decision-makers. Mediamozak creates high-converting quiz funnels, landing pages, and multi-channel drip systems to capture high-value leads.",
+                    features: ["Interactive Qualification Funnels", "Real-Time CRM Sync", "Automated Lead Nurturing", "B2B LinkedIn Outreach"],
+                    bannerImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1000&q=80"
+                },
+                {
+                    id: "search-engine-optimization",
+                    title: "Search Engine Optimization (SEO)",
+                    icon: "search",
+                    shortDesc: "First-page ranking strategies combining technical SEO, link building, and intent-targeted content.",
+                    fullContent: "Dominate organic search result pages. Our SEO strategy focuses on Technical Audit fixes, High Domain Authority backlinks, local search Google Business profile optimization, and intent-focused editorial content.",
+                    features: ["Technical SEO & Core Web Vitals Fixes", "Keyword Intent Mapping", "Authority Link Building", "Google Business Profile Booster"],
+                    bannerImage: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&w=1000&q=80"
+                }
+            ],
+            faqs: [
+                {
+                    category: "General",
+                    question: "What makes Mediamozak different from traditional agencies?",
+                    answer: "Mediamozak focuses on measurable business outcomes rather than vanity metrics. We integrate advanced web architecture with direct-response performance ad funnels."
+                },
+                {
+                    category: "Services",
+                    question: "How long does it take to see results from SEO vs Performance Marketing?",
+                    answer: "Performance marketing delivers instant leads and traffic within 24-48 hours of campaign launch, whereas SEO produces compound long-term organic growth over 3 to 6 months."
+                },
+                {
+                    category: "Pricing",
+                    question: "Do you offer customized retainer models?",
+                    answer: "Yes! We tailor our retainer models to your specific growth stage—whether you need project-based web development or an all-inclusive growth performance package."
+                },
+                {
+                    category: "Quick-Com",
+                    question: "What is Quick-com Marketing and how can my brand benefit?",
+                    answer: "Quick-com marketing targets fast delivery apps like Blinkit and Zepto. We optimize your product visibility inside these apps to capture high-intent buyers in real-time."
+                }
+            ],
+            blogs: [
+                {
+                    id: "mastering-quick-commerce-marketing-2026",
+                    title: "Mastering Quick Commerce Marketing in 2026: Strategies for FMCG Brands",
+                    slug: "mastering-quick-commerce-marketing-2026",
+                    metaTitle: "Quick Commerce Marketing Guide 2026 | Mediamozak",
+                    metaDesc: "Discover how to optimize your listings on instant delivery platforms and run hyper-local ad campaigns for maximum conversion.",
+                    focusKeyword: "Quick Commerce Marketing",
+                    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+                    date: "September 20, 2026",
+                    readTime: "5 min read",
+                    content: "Quick commerce has revolutionized how urban consumers shop. Brands that position themselves effectively on 10-minute delivery apps can gain immense market share. Key tactics include hyper-local targeting, promotional placement during peak demand hours, and dynamic visual banners."
+                },
+                {
+                    id: "roi-driven-performance-marketing-framework",
+                    title: "The Ultimate Framework for ROI-Driven Performance Marketing",
+                    slug: "roi-driven-performance-marketing-framework",
+                    metaTitle: "Performance Marketing ROI Framework | Mediamozak Blog",
+                    metaDesc: "Learn how to scale ad spend without losing ROAS across Meta, Google Ads, and TikTok.",
+                    focusKeyword: "Performance Marketing ROI",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+                    date: "September 15, 2026",
+                    readTime: "7 min read",
+                    content: "Scaling ad campaigns requires continuous creative iteration and deep audience segmenting. By leveraging server-side tracking (Meta Pixel & Conversion APIs), brands can retain tracking accuracy and lower Customer Acquisition Costs (CAC)."
+                }
+            ]
+        };
+
+        // Helper function for dual image upload / link handling in CMS
+        function renderImageUploaderHTML(label, targetInputId, currentUrl) {
+            return `
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">${label}</label>
+                    <div class="space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <input type="text" id="${targetInputId}" value="${currentUrl || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="Enter image URL https://...">
+                            <label class="cursor-pointer bg-gray-800 hover:bg-gray-700 text-brand-gold border border-brand-gold/30 rounded-lg px-3 py-2 text-xs font-semibold whitespace-nowrap flex items-center gap-1.5 transition-colors">
+                                <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                                <span>Upload File</span>
+                                <input type="file" accept="image/*" class="hidden" onchange="handleImageFileUpload(event, '${targetInputId}')">
+                            </label>
+                        </div>
+                        <div id="${targetInputId}-preview" class="mt-2 ${currentUrl ? '' : 'hidden'}">
+                            <div class="relative w-24 h-16 rounded-lg overflow-hidden border border-gray-800 bg-gray-950 flex items-center justify-center">
+                                <img src="${currentUrl || ''}" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleImageFileUpload(e, targetInputId) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const dataUrl = evt.target.result;
+                    const input = document.getElementById(targetInputId);
+                    if (input) {
+                        input.value = dataUrl;
+                    }
+                    const previewContainer = document.getElementById(targetInputId + '-preview');
+                    if (previewContainer) {
+                        previewContainer.classList.remove('hidden');
+                        previewContainer.innerHTML = `
+                            <div class="relative w-24 h-16 rounded-lg overflow-hidden border border-gray-800 bg-gray-950 flex items-center justify-center">
+                                <img src="${dataUrl}" class="w-full h-full object-cover">
+                            </div>
+                        `;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // SVG Icons dictionary for Social Media render guarantee
+        const SOCIAL_SVGS = {
+            facebook: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+            instagram: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`,
+            linkedin: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`,
+            twitter: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+            youtube: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`
+        };
+
+        // App State Manager
+        let appState = {};
+
+        function loadState() {
+            const saved = localStorage.getItem('MEDIAMOZAK_CMS_DATA');
+            if (saved) {
+                try {
+                    appState = JSON.parse(saved);
+                    if (!appState.auth) appState.auth = { ...DEFAULT_DATA.auth };
+                    if (!appState.legal) appState.legal = { ...DEFAULT_DATA.legal };
+                    if (!appState.socials) appState.socials = { ...DEFAULT_DATA.socials };
+                    if (!appState.leads) appState.leads = [];
+                    if (!appState.pageImages) appState.pageImages = { ...DEFAULT_DATA.pageImages };
+                } catch(e) {
+                    console.error("Error loading state, using default", e);
+                    appState = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                }
+            } else {
+                appState = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            }
+        }
+
+        function saveState() {
+            localStorage.setItem('MEDIAMOZAK_CMS_DATA', JSON.stringify(appState));
+            applySEOInjections();
+            updateUI();
+            showToast("Changes updated & saved live!");
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toast-msg');
+            const toastText = document.getElementById('toast-text');
+            if (toast && toastText) {
+                toastText.textContent = text;
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            }
+        }
+
+        function resetDataToDefault() {
+            if (confirm("Are you sure you want to reset all content back to factory defaults? Custom changes will be cleared.")) {
+                appState = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                saveState();
+                window.location.reload();
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        // Dynamic SEO Script Injection Helper
+        function applySEOInjections() {
+            const container = document.getElementById('dynamic-head-scripts');
+            if (!container) return;
+
+            document.title = appState.seo.globalTitle || "Mediamozak Marketing Agency";
+
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+                metaDesc = document.createElement('meta');
+                metaDesc.name = "description";
+                document.head.appendChild(metaDesc);
+            }
+            metaDesc.content = appState.seo.globalDescription;
+
+            let metaKw = document.querySelector('meta[name="keywords"]');
+            if (!metaKw) {
+                metaKw = document.createElement('meta');
+                metaKw.name = "keywords";
+                document.head.appendChild(metaKw);
+            }
+            metaKw.content = appState.seo.globalKeywords;
+
+            container.innerHTML = `
+                <meta name="google-site-verification" content="${appState.seo.googleConsoleMeta}" />
+            `;
+
+            let favicon = document.querySelector("link[rel*='icon']");
+            if (!favicon) {
+                favicon = document.createElement('link');
+                favicon.rel = 'shortcut icon';
+                document.head.appendChild(favicon);
+            }
+            favicon.href = appState.branding.faviconUrl;
+        }
+
+        // Routing Manager
+        let currentRoute = { page: 'home', param: null };
+
+        function navigateTo(page, param = null) {
+            currentRoute = { page, param };
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderPage();
+            updateNavActiveState();
+        }
+
+        function updateNavActiveState() {
+            document.querySelectorAll('.nav-item').forEach(el => {
+                if (el.getAttribute('data-page') === currentRoute.page) {
+                    el.classList.add('text-brand-gold');
+                    el.classList.remove('text-gray-300');
+                } else {
+                    el.classList.remove('text-brand-gold');
+                    el.classList.add('text-gray-300');
+                }
+            });
+        }
+
+        // UI Update Loop
+        function updateUI() {
+            document.querySelectorAll('#nav-brand-name, #footer-brand-name').forEach(el => el.textContent = appState.branding.name);
+            document.getElementById('nav-logo-img').src = appState.branding.logoUrl;
+            document.getElementById('footer-logo-img').src = appState.branding.logoUrl;
+            document.getElementById('footer-about-text').textContent = appState.about.subheading;
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            const navDropdown = document.getElementById('nav-services-dropdown');
+            const mobileServices = document.getElementById('mobile-services-list');
+            const footerServices = document.getElementById('footer-services-list');
+            
+            let servicesNavHTML = '';
+            let footerNavHTML = '';
+
+            appState.services.forEach(srv => {
+                servicesNavHTML += `
+                    <a href="#service-${srv.id}" onclick="navigateTo('service', '${srv.id}')" class="block px-3 py-2 text-xs text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors flex items-center gap-2">
+                        <i data-lucide="${srv.icon || 'star'}" class="w-3.5 h-3.5 text-brand-gold"></i>
+                        <span class="truncate">${srv.title}</span>
+                    </a>
+                `;
+                footerNavHTML += `
+                    <li><a href="#service-${srv.id}" onclick="navigateTo('service', '${srv.id}')" class="hover:text-brand-gold transition-colors">${srv.title}</a></li>
+                `;
+            });
+
+            if (navDropdown) navDropdown.innerHTML = servicesNavHTML;
+            if (mobileServices) mobileServices.innerHTML = servicesNavHTML;
+            if (footerServices) footerServices.innerHTML = footerNavHTML;
+
+            // Render Social Links explicitly using inline SVG definitions to ensure visibility
+            const socialContainer = document.getElementById('footer-social-links');
+            if (socialContainer) {
+                let socialHTML = '';
+                const s = appState.socials || {};
+                
+                if (s.facebook && s.facebook.trim() !== '') {
+                    socialHTML += `<a href="${s.facebook}" target="_blank" rel="noopener noreferrer" title="Facebook" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-gray-300 flex items-center justify-center transition-colors">${SOCIAL_SVGS.facebook}</a>`;
+                }
+                if (s.instagram && s.instagram.trim() !== '') {
+                    socialHTML += `<a href="${s.instagram}" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-gray-300 flex items-center justify-center transition-colors">${SOCIAL_SVGS.instagram}</a>`;
+                }
+                if (s.linkedin && s.linkedin.trim() !== '') {
+                    socialHTML += `<a href="${s.linkedin}" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-gray-300 flex items-center justify-center transition-colors">${SOCIAL_SVGS.linkedin}</a>`;
+                }
+                if (s.twitter && s.twitter.trim() !== '') {
+                    socialHTML += `<a href="${s.twitter}" target="_blank" rel="noopener noreferrer" title="Twitter / X" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-gray-300 flex items-center justify-center transition-colors">${SOCIAL_SVGS.twitter}</a>`;
+                }
+                if (s.youtube && s.youtube.trim() !== '') {
+                    socialHTML += `<a href="${s.youtube}" target="_blank" rel="noopener noreferrer" title="YouTube" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-gray-300 flex items-center justify-center transition-colors">${SOCIAL_SVGS.youtube}</a>`;
+                }
+                socialContainer.innerHTML = socialHTML;
+            }
+
+            // Render Footer Contact Info
+            const contactContainer = document.getElementById('footer-contact-details');
+            if (contactContainer) {
+                contactContainer.innerHTML = `
+                    <li class="flex items-start gap-2.5">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5"></i>
+                        <span>${appState.contact.phone}</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i data-lucide="mail" class="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5"></i>
+                        <span>${appState.contact.email}</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5"></i>
+                        <span>${appState.contact.address}</span>
+                    </li>
+                `;
+            }
+
+            // Render Floating WhatsApp
+            const waBtn = document.getElementById('whatsapp-floating-btn');
+            if (waBtn) {
+                if (appState.whatsapp.enabled) {
+                    const encodedMsg = encodeURIComponent(appState.whatsapp.message);
+                    const waUrl = `https://wa.me/${appState.whatsapp.number.replace(/[^0-9]/g, '')}?text=${encodedMsg}`;
+                    waBtn.innerHTML = `
+                        <a href="${waUrl}" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group relative">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                            <span class="absolute right-full mr-3 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap border border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+                                Chat with Us on WhatsApp
+                            </span>
+                        </a>
+                    `;
+                } else {
+                    waBtn.innerHTML = '';
+                }
+            }
+
+            lucide.createIcons();
+            renderPage();
+        }
+
+        // Dynamic Page Content Renderer
+        function renderPage() {
+            const container = document.getElementById('main-app');
+            if (!container) return;
+
+            const p = currentRoute.page;
+            const param = currentRoute.param;
+
+            if (p === 'home') {
+                container.innerHTML = renderHomeView();
+            } else if (p === 'about') {
+                container.innerHTML = renderAboutView();
+            } else if (p === 'services') {
+                container.innerHTML = renderServicesListView();
+            } else if (p === 'service') {
+                container.innerHTML = renderSingleServiceView(param);
+            } else if (p === 'blog') {
+                container.innerHTML = renderBlogListView();
+            } else if (p === 'blog-post') {
+                container.innerHTML = renderSingleBlogPostView(param);
+            } else if (p === 'faqs') {
+                container.innerHTML = renderFAQsView();
+            } else if (p === 'contact') {
+                container.innerHTML = renderContactView();
+            } else if (p === 'privacy') {
+                container.innerHTML = renderPrivacyView();
+            } else if (p === 'terms') {
+                container.innerHTML = renderTermsView();
+            } else {
+                container.innerHTML = renderHomeView();
+            }
+
+            lucide.createIcons();
+        }
+
+        // PAGE VIEWS GENERATORS
+        function renderHomeView() {
+            const s = appState;
+            return `
+                <!-- Hero Section -->
+                <section class="relative bg-gray-950 py-20 lg:py-32 overflow-hidden border-b border-gray-800">
+                    <div class="absolute inset-0 z-0 opacity-20">
+                        <img src="${s.pageImages.homeBanner}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/80 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold uppercase tracking-wider mb-6">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span>Results-Driven Digital Growth Agency</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+                            Scale Your Brand With <span class="gold-gradient-text">Precision Marketing</span> & Code
+                        </h1>
+                        <p class="mt-6 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                            ${s.about.subheading}
+                        </p>
+
+                        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="#contact" onclick="navigateTo('contact')" class="w-full sm:w-auto gold-bg-gradient text-gray-950 font-bold px-8 py-4 rounded-xl hover:opacity-95 transition-all text-base shadow-xl flex items-center justify-center gap-2">
+                                <span>Get Free Strategy Call</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#services" onclick="navigateTo('services')" class="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-white border border-gray-700 font-semibold px-8 py-4 rounded-xl transition-all text-base flex items-center justify-center gap-2">
+                                <span>Explore Services</span>
+                            </a>
+                        </div>
+
+                        <!-- Key Metrics Bar -->
+                        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-gray-800/80 max-w-4xl mx-auto">
+                            <div class="p-4 bg-gray-900/60 border border-gray-800 rounded-2xl">
+                                <p class="text-3xl font-extrabold text-brand-gold">${s.about.yearsExp}</p>
+                                <p class="text-xs text-gray-400 mt-1 uppercase font-medium">Years Experience</p>
+                            </div>
+                            <div class="p-4 bg-gray-900/60 border border-gray-800 rounded-2xl">
+                                <p class="text-3xl font-extrabold text-brand-gold">${s.about.campaignsDone}</p>
+                                <p class="text-xs text-gray-400 mt-1 uppercase font-medium">Campaigns Executed</p>
+                            </div>
+                            <div class="p-4 bg-gray-900/60 border border-gray-800 rounded-2xl">
+                                <p class="text-3xl font-extrabold text-brand-gold">${s.about.revenueGenerated}</p>
+                                <p class="text-xs text-gray-400 mt-1 uppercase font-medium">Client Revenue Scaled</p>
+                            </div>
+                            <div class="p-4 bg-gray-900/60 border border-gray-800 rounded-2xl">
+                                <p class="text-3xl font-extrabold text-brand-gold">99.4%</p>
+                                <p class="text-xs text-gray-400 mt-1 uppercase font-medium">Client Retention Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Our Featured Services Grid -->
+                <section class="py-20 bg-gray-900">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-2">Capabilities</h2>
+                            <h3 class="text-3xl sm:text-4xl font-bold text-white">Full-Funnel Digital Services</h3>
+                            <p class="text-gray-400 text-sm mt-3">From fast enterprise web applications to hyper-targeted performance advertising.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${s.services.map(srv => `
+                                <div class="bg-gray-950 border border-gray-800 hover:border-brand-gold/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-gray-950 transition-colors">
+                                            <i data-lucide="${srv.icon || 'star'}" class="w-6 h-6"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors">${srv.title}</h4>
+                                        <p class="text-gray-400 text-sm leading-relaxed mb-6">${srv.shortDesc}</p>
+                                    </div>
+                                    <a href="#service-${srv.id}" onclick="navigateTo('service', '${srv.id}')" class="inline-flex items-center gap-2 text-brand-gold font-semibold text-sm hover:underline pt-4 border-t border-gray-800/80">
+                                        <span>Learn More</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call To Action -->
+                <section class="py-16 bg-gray-950 border-t border-gray-800">
+                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900 to-gray-800 border border-brand-gold/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+                        <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">Ready to Accelerate Your Brand Growth?</h2>
+                        <p class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base mb-8">Speak with our agency founders and discover how our tailored marketing funnels and custom tech stack can double your revenue.</p>
+                        <a href="#contact" onclick="navigateTo('contact')" class="inline-flex items-center gap-2 gold-bg-gradient text-gray-950 font-bold px-8 py-3.5 rounded-xl text-sm hover:opacity-90 transition-all shadow-xl">
+                            <span>Schedule Consultation</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderAboutView() {
+            const ab = appState.about;
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto mb-12">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">About Mediamozak</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">${ab.heading}</h1>
+                            <p class="text-gray-300 text-base leading-relaxed">${ab.subheading}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
+                            <div class="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+                                <img src="${ab.teamImage}" alt="Mediamozak Team" class="w-full h-auto object-cover">
+                            </div>
+                            <div class="space-y-6">
+                                <h2 class="text-2xl font-bold text-white">Engineering Growth for Modern Digital Enterprises</h2>
+                                <p class="text-gray-400 text-sm leading-relaxed">${ab.mission}</p>
+                                
+                                <div class="grid grid-cols-2 gap-4 pt-4">
+                                    <div class="p-4 bg-gray-900 border border-gray-800 rounded-xl">
+                                        <div class="text-2xl font-bold text-brand-gold">${ab.yearsExp}</div>
+                                        <div class="text-xs text-gray-400 mt-1">Industry Mastery</div>
+                                    </div>
+                                    <div class="p-4 bg-gray-900 border border-gray-800 rounded-xl">
+                                        <div class="text-2xl font-bold text-brand-gold">${ab.campaignsDone}</div>
+                                        <div class="text-xs text-gray-400 mt-1">Successful Campaigns</div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6">
+                                    <a href="#contact" onclick="navigateTo('contact')" class="gold-bg-gradient text-gray-950 font-semibold px-6 py-3 rounded-lg text-sm inline-flex items-center gap-2">
+                                        <span>Work With Us</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderServicesListView() {
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Our Expertise</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Comprehensive Marketing & Tech Services</h1>
+                            <p class="text-gray-400 text-sm mt-3">Select a service to view specialized capabilities and case methodologies.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${appState.services.map(srv => `
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-brand-gold/50 transition-all group flex flex-col justify-between">
+                                    <div class="h-48 overflow-hidden relative">
+                                        <img src="${srv.bannerImage}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+                                    </div>
+                                    <div class="p-6 flex-grow flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-gold transition-colors">${srv.title}</h3>
+                                            <p class="text-gray-400 text-xs leading-relaxed mb-4">${srv.shortDesc}</p>
+                                        </div>
+                                        <a href="#service-${srv.id}" onclick="navigateTo('service', '${srv.id}')" class="w-full bg-gray-800 hover:bg-brand-gold hover:text-gray-950 text-white text-xs font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2 mt-4">
+                                            <span>Explore Service</span>
+                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSingleServiceView(serviceId) {
+            const srv = appState.services.find(s => s.id === serviceId) || appState.services[0];
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <!-- Breadcrumb Nav -->
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-8">
+                            <a href="#home" onclick="navigateTo('home')" class="hover:text-white">Home</a>
+                            <span>/</span>
+                            <a href="#services" onclick="navigateTo('services')" class="hover:text-white">Services</a>
+                            <span>/</span>
+                            <span class="text-brand-gold font-medium">${srv.title}</span>
+                        </div>
+
+                        <!-- Service Banner -->
+                        <div class="relative rounded-3xl overflow-hidden border border-gray-800 h-64 sm:h-80 mb-10">
+                            <img src="${srv.bannerImage}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent"></div>
+                            <div class="absolute bottom-8 left-8 right-8">
+                                <span class="text-xs uppercase font-bold text-brand-gold tracking-widest bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/30">Service Overview</span>
+                                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">${srv.title}</h1>
+                            </div>
+                        </div>
+
+                        <!-- Service Details -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                            <div class="lg:col-span-2 space-y-8">
+                                <div>
+                                    <h2 class="text-xl font-bold text-white mb-3">Service Deep Dive</h2>
+                                    <p class="text-gray-300 text-sm leading-relaxed whitespace-pre-line">${srv.fullContent}</p>
+                                </div>
+
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+                                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                                        <span>Key Capabilities & Deliverables</span>
+                                    </h3>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        ${(srv.features || []).map(f => `
+                                            <div class="flex items-center gap-2 text-xs text-gray-300 bg-gray-950 p-3 rounded-lg border border-gray-800">
+                                                <i data-lucide="check" class="w-4 h-4 text-brand-gold"></i>
+                                                <span>${f}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sidebar Widget -->
+                            <div class="space-y-6">
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
+                                    <h3 class="text-lg font-bold text-white mb-2">Need ${srv.title}?</h3>
+                                    <p class="text-xs text-gray-400 mb-6">Let's build a dedicated execution plan for your business today.</p>
+                                    <a href="#contact" onclick="navigateTo('contact')" class="gold-bg-gradient text-gray-950 font-bold w-full py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                                        <span>Book Quick Audit</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderBlogListView() {
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Growth Insights</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Mediamozak Strategy Blog</h1>
+                            <p class="text-gray-400 text-sm mt-3">Tactical marketing guides, performance growth hacks, and industry insights.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            ${appState.blogs.map(post => `
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-brand-gold/50 transition-all group flex flex-col justify-between">
+                                    <div class="h-56 overflow-hidden relative">
+                                        <img src="${post.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-brand-gold text-[10px] font-bold px-3 py-1 rounded-full border border-gray-800">
+                                            ${post.readTime || '5 min read'}
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="text-xs text-gray-500 mb-2">${post.date}</div>
+                                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors">${post.title}</h3>
+                                        <p class="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-3">${post.metaDesc || post.content}</p>
+                                        <a href="#blog-${post.id}" onclick="navigateTo('blog-post', '${post.id}')" class="inline-flex items-center gap-2 text-brand-gold font-semibold text-xs hover:underline">
+                                            <span>Read Full Article</span>
+                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSingleBlogPostView(postId) {
+            const post = appState.blogs.find(b => b.id === postId) || appState.blogs[0];
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-8">
+                            <a href="#home" onclick="navigateTo('home')" class="hover:text-white">Home</a>
+                            <span>/</span>
+                            <a href="#blog" onclick="navigateTo('blog')" class="hover:text-white">Blog</a>
+                            <span>/</span>
+                            <span class="text-brand-gold font-medium truncate">${post.title}</span>
+                        </div>
+
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">${post.date} • ${post.readTime}</span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-6 leading-tight">${post.title}</h1>
+
+                        <div class="rounded-3xl overflow-hidden border border-gray-800 h-80 mb-10">
+                            <img src="${post.image}" class="w-full h-full object-cover">
+                        </div>
+
+                        <div class="prose prose-invert max-w-none text-gray-300 text-sm sm:text-base leading-relaxed space-y-6">
+                            <p>${post.content}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFAQsView() {
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Help & Answers</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Frequently Asked Questions</h1>
+                            <p class="text-gray-400 text-sm mt-3">Find clear answers regarding our onboarding, timeline, and agency workflow.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            ${appState.faqs.map((faq, idx) => `
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-3">
+                                            <span class="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs flex items-center justify-center flex-shrink-0 font-bold">${idx + 1}</span>
+                                            <span>${faq.question}</span>
+                                        </h3>
+                                        <span class="text-[10px] bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">${faq.category}</span>
+                                    </div>
+                                    <p class="text-gray-400 text-xs sm:text-sm mt-4 pl-9 leading-relaxed border-t border-gray-800/80 pt-3">${faq.answer}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPrivacyView() {
+            const l = appState.legal;
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                            <a href="#home" onclick="navigateTo('home')" class="hover:text-white">Home</a>
+                            <span>/</span>
+                            <span class="text-brand-gold font-medium">Privacy Policy</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-white">${l.privacyTitle}</h1>
+                        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-gray-300 text-sm sm:text-base leading-relaxed whitespace-pre-line space-y-4">
+                            ${l.privacyContent}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTermsView() {
+            const l = appState.legal;
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                            <a href="#home" onclick="navigateTo('home')" class="hover:text-white">Home</a>
+                            <span>/</span>
+                            <span class="text-brand-gold font-medium">Terms & Conditions</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-white">${l.termsTitle}</h1>
+                        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-gray-300 text-sm sm:text-base leading-relaxed whitespace-pre-line space-y-4">
+                            ${l.termsContent}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderContactView() {
+            const c = appState.contact;
+            return `
+                <div class="py-16 bg-gray-950">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Contact Us</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Start Your Growth Journey</h1>
+                            <p class="text-gray-400 text-sm mt-3">Fill out the form below or reach out directly to our strategist team.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                            <!-- Contact Info -->
+                            <div class="space-y-6">
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+                                    <div class="p-3 bg-brand-gold/10 text-brand-gold rounded-xl border border-brand-gold/30">
+                                        <i data-lucide="phone" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Direct Phone Call</h4>
+                                        <p class="text-xs text-gray-400 mt-1">${c.phone}</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+                                    <div class="p-3 bg-brand-gold/10 text-brand-gold rounded-xl border border-brand-gold/30">
+                                        <i data-lucide="mail" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Email Consultation</h4>
+                                        <p class="text-xs text-gray-400 mt-1">${c.email}</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+                                    <div class="p-3 bg-brand-gold/10 text-brand-gold rounded-xl border border-brand-gold/30">
+                                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Agency Headquarters</h4>
+                                        <p class="text-xs text-gray-400 mt-1">${c.address}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form -->
+                            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+                                <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-300 mb-1">Full Name</label>
+                                        <input type="text" id="lead-name" required class="w-full bg-gray-950 border border-gray-800 rounded-lg px-4 py-3 text-xs text-white focus:border-brand-gold outline-none" placeholder="Enter your full name">
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-300 mb-1">Email Address</label>
+                                            <input type="email" id="lead-email" required class="w-full bg-gray-950 border border-gray-800 rounded-lg px-4 py-3 text-xs text-white focus:border-brand-gold outline-none" placeholder="name@company.com">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-300 mb-1">Phone Number</label>
+                                            <input type="tel" id="lead-phone" required class="w-full bg-gray-950 border border-gray-800 rounded-lg px-4 py-3 text-xs text-white focus:border-brand-gold outline-none" placeholder="+91 ...">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-300 mb-1">Service Interested In</label>
+                                        <select id="lead-service" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-4 py-3 text-xs text-white focus:border-brand-gold outline-none">
+                                            ${appState.services.map(s => `<option>${s.title}</option>`).join('')}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-300 mb-1">Project Details / Goals</label>
+                                        <textarea id="lead-message" rows="4" required class="w-full bg-gray-950 border border-gray-800 rounded-lg px-4 py-3 text-xs text-white focus:border-brand-gold outline-none" placeholder="Describe your growth targets..."></textarea>
+                                    </div>
+                                    <button type="submit" class="w-full gold-bg-gradient text-gray-950 font-bold py-3.5 rounded-lg text-xs hover:opacity-95 transition-all shadow-xl">
+                                        Submit Inquiry
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const newLead = {
+                id: Date.now(),
+                name: document.getElementById('lead-name').value,
+                email: document.getElementById('lead-email').value,
+                phone: document.getElementById('lead-phone').value,
+                service: document.getElementById('lead-service').value,
+                message: document.getElementById('lead-message').value,
+                date: new Date().toLocaleString(),
+                status: 'New'
+            };
+
+            if (!appState.leads) {
+                appState.leads = [];
+            }
+            appState.leads.unshift(newLead);
+            localStorage.setItem('MEDIAMOZAK_CMS_DATA', JSON.stringify(appState));
+
+            showToast("Inquiry submitted successfully! Our strategy lead will reach out shortly.");
+            e.target.reset();
+        }
+
+        // OPEN ADMIN PANEL IN NEW TAB WITH LOGIN CREDENTIALS
+        function openAdminNewTab() {
+            window.open(window.location.href.split('?')[0] + '?admin=true', '_blank');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('admin-user').value;
+            const p = document.getElementById('admin-pass').value;
+            const err = document.getElementById('login-error');
+
+            const auth = appState.auth || { username: 'admin', password: 'password123' };
+
+            if (u === auth.username && p === auth.password) {
+                document.getElementById('login-modal').classList.add('hidden');
+                toggleAdminModal(true);
+            } else {
+                err.classList.remove('hidden');
+            }
+        }
+
+        // Forgot Password Recovery Handlers
+        function showForgotPasswordView(show) {
+            const loginForm = document.getElementById('login-form-element');
+            const forgotView = document.getElementById('forgot-password-view');
+            const err = document.getElementById('login-error');
+            if (err) err.classList.add('hidden');
+
+            if (show) {
+                loginForm.classList.add('hidden');
+                forgotView.classList.remove('hidden');
+            } else {
+                loginForm.classList.remove('hidden');
+                forgotView.classList.add('hidden');
+                document.getElementById('recovery-msg').classList.add('hidden');
+                document.getElementById('recovery-error').classList.add('hidden');
+            }
+        }
+
+        function handlePasswordRecovery(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('recovery-email').value.trim();
+            const msg = document.getElementById('recovery-msg');
+            const err = document.getElementById('recovery-error');
+            const targetEmail = (appState.auth && appState.auth.email) ? appState.auth.email : 'mediamozak@gmail.com';
+
+            if (emailInput === targetEmail) {
+                err.classList.add('hidden');
+                msg.textContent = `Password reset instructions sent to ${targetEmail}! Current password is: ${appState.auth.password}`;
+                msg.classList.remove('hidden');
+            } else {
+                msg.classList.add('hidden');
+                err.textContent = `Email not recognized. Use ${targetEmail}`;
+                err.classList.remove('hidden');
+            }
+        }
+
+        // CMS ADMIN DASHBOARD LOGIC
+        function toggleAdminModal(show) {
+            const modal = document.getElementById('admin-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                switchAdminTab('security');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabName) {
+                    btn.classList.add('bg-gray-800', 'text-brand-gold');
+                } else {
+                    btn.classList.remove('bg-gray-800', 'text-brand-gold');
+                }
+            });
+
+            const panel = document.getElementById('admin-panel-content');
+            if (!panel) return;
+
+            if (tabName === 'security') {
+                panel.innerHTML = renderAdminSecurityForm();
+            } else if (tabName === 'seo') {
+                panel.innerHTML = renderAdminSEOForm();
+            } else if (tabName === 'branding') {
+                panel.innerHTML = renderAdminBrandingForm();
+            } else if (tabName === 'whatsapp') {
+                panel.innerHTML = renderAdminWhatsAppForm();
+            } else if (tabName === 'social') {
+                panel.innerHTML = renderAdminSocialForm();
+            } else if (tabName === 'leads') {
+                panel.innerHTML = renderAdminLeadsManager();
+            } else if (tabName === 'services') {
+                panel.innerHTML = renderAdminServicesManager();
+            } else if (tabName === 'blog') {
+                panel.innerHTML = renderAdminBlogManager();
+            } else if (tabName === 'faqs') {
+                panel.innerHTML = renderAdminFAQsManager();
+            } else if (tabName === 'legal') {
+                panel.innerHTML = renderAdminLegalForm();
+            } else if (tabName === 'about') {
+                panel.innerHTML = renderAdminAboutManager();
+            } else if (tabName === 'contact') {
+                panel.innerHTML = renderAdminContactManager();
+            } else if (tabName === 'images') {
+                panel.innerHTML = renderAdminImagesManager();
+            }
+
+            lucide.createIcons();
+        }
+
+        // ADMIN TAB FORMS
+        function renderAdminSecurityForm() {
+            const auth = appState.auth || { username: 'admin', password: 'password123', email: 'mediamozak@gmail.com' };
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Admin Security & Password Reset</h3>
+                        <p class="text-xs text-gray-400">Update your administrator username, recovery email, and secure password.</p>
+                    </div>
+
+                    <form onsubmit="saveSecurityForm(event)" class="space-y-4 max-w-lg">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Admin Username</label>
+                            <input type="text" id="sec-user" value="${auth.username}" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Admin Recovery Email</label>
+                            <input type="email" id="sec-email" value="${auth.email}" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">New Password</label>
+                            <input type="password" id="sec-pass" value="${auth.password}" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Update Credentials</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveSecurityForm(e) {
+            e.preventDefault();
+            appState.auth = {
+                username: document.getElementById('sec-user').value,
+                email: document.getElementById('sec-email').value,
+                password: document.getElementById('sec-pass').value
+            };
+            saveState();
+        }
+
+        function renderAdminLegalForm() {
+            const l = appState.legal || DEFAULT_DATA.legal;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Legal Pages Manager</h3>
+                        <p class="text-xs text-gray-400">Manage content for Privacy Policy and Terms & Conditions pages.</p>
+                    </div>
+
+                    <form onsubmit="saveLegalForm(event)" class="space-y-6">
+                        <div class="p-4 bg-gray-950 border border-gray-800 rounded-xl space-y-4">
+                            <h4 class="text-sm font-bold text-brand-gold">Privacy Policy Page</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Page Heading</label>
+                                <input type="text" id="leg-priv-title" value="${l.privacyTitle}" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Privacy Content</label>
+                                <textarea id="leg-priv-content" rows="6" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">${l.privacyContent}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-gray-950 border border-gray-800 rounded-xl space-y-4">
+                            <h4 class="text-sm font-bold text-brand-gold">Terms & Conditions Page</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Page Heading</label>
+                                <input type="text" id="leg-terms-title" value="${l.termsTitle}" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Terms Content</label>
+                                <textarea id="leg-terms-content" rows="6" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">${l.termsContent}</textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save Legal Pages</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveLegalForm(e) {
+            e.preventDefault();
+            appState.legal = {
+                privacyTitle: document.getElementById('leg-priv-title').value,
+                privacyContent: document.getElementById('leg-priv-content').value,
+                termsTitle: document.getElementById('leg-terms-title').value,
+                termsContent: document.getElementById('leg-terms-content').value
+            };
+            saveState();
+        }
+
+        function renderAdminSEOForm() {
+            const s = appState.seo;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">SEO & Analytics Tag Injections</h3>
+                        <p class="text-xs text-gray-400">Inject tracking pixels, Search Console verification tokens, and global SEO meta data.</p>
+                    </div>
+
+                    <form onsubmit="saveSEOForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Google Search Console Verification Meta Tag</label>
+                            <input type="text" id="seo-console" value="${s.googleConsoleMeta}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Google Analytics (GA4) Tracking ID</label>
+                                <input type="text" id="seo-ga4" value="${s.ga4MeasurementId}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Pixel (Facebook) Script ID</label>
+                                <input type="text" id="seo-pixel" value="${s.metaPixelId}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Global SEO Page Title</label>
+                            <input type="text" id="seo-title" value="${s.globalTitle}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Keywords (Comma separated)</label>
+                            <input type="text" id="seo-keywords" value="${s.globalKeywords}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Global Description</label>
+                            <textarea id="seo-desc" rows="3" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">${s.globalDescription}</textarea>
+                        </div>
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save SEO Settings</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveSEOForm(e) {
+            e.preventDefault();
+            appState.seo.googleConsoleMeta = document.getElementById('seo-console').value;
+            appState.seo.ga4MeasurementId = document.getElementById('seo-ga4').value;
+            appState.seo.metaPixelId = document.getElementById('seo-pixel').value;
+            appState.seo.globalTitle = document.getElementById('seo-title').value;
+            appState.seo.globalKeywords = document.getElementById('seo-keywords').value;
+            appState.seo.globalDescription = document.getElementById('seo-desc').value;
+            saveState();
+        }
+
+        function renderAdminBrandingForm() {
+            const b = appState.branding;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Agency Branding & Assets</h3>
+                        <p class="text-xs text-gray-400">Update main agency title, custom logo image URL/file, and browser favicon.</p>
+                    </div>
+
+                    <form onsubmit="saveBrandingForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Agency Brand Name</label>
+                            <input type="text" id="brand-name" value="${b.name}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        
+                        ${renderImageUploaderHTML('Logo Image (Upload or URL)', 'brand-logo', b.logoUrl)}
+                        ${renderImageUploaderHTML('Favicon Image (Upload or URL)', 'brand-favicon', b.faviconUrl)}
+
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save Branding</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveBrandingForm(e) {
+            e.preventDefault();
+            appState.branding.name = document.getElementById('brand-name').value;
+            appState.branding.logoUrl = document.getElementById('brand-logo').value;
+            appState.branding.faviconUrl = document.getElementById('brand-favicon').value;
+            saveState();
+        }
+
+        function renderAdminWhatsAppForm() {
+            const w = appState.whatsapp;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">WhatsApp Floating Chat Widget</h3>
+                        <p class="text-xs text-gray-400">Configure floating WhatsApp button and default greeting message.</p>
+                    </div>
+
+                    <form onsubmit="saveWhatsAppForm(event)" class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="wa-enable" ${w.enabled ? 'checked' : ''} class="w-4 h-4 accent-brand-gold">
+                            <label for="wa-enable" class="text-xs font-semibold text-gray-300">Enable Floating WhatsApp Button</label>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">WhatsApp Phone Number (With Country Code)</label>
+                            <input type="text" id="wa-number" value="${w.number}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Default WhatsApp Chat Preset Message</label>
+                            <textarea id="wa-msg" rows="3" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">${w.message}</textarea>
+                        </div>
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save WhatsApp Settings</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveWhatsAppForm(e) {
+            e.preventDefault();
+            appState.whatsapp.enabled = document.getElementById('wa-enable').checked;
+            appState.whatsapp.number = document.getElementById('wa-number').value;
+            appState.whatsapp.message = document.getElementById('wa-msg').value;
+            saveState();
+        }
+
+        function renderAdminSocialForm() {
+            const s = appState.socials || {};
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Social Media Profile Links</h3>
+                        <p class="text-xs text-gray-400">Manage social links shown on the website footer. Icons display automatically when links are present.</p>
+                    </div>
+
+                    <form onsubmit="saveSocialForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Facebook Profile URL</label>
+                            <input type="text" id="social-fb" value="${s.facebook || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="https://facebook.com/yourpage">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Instagram Profile URL</label>
+                            <input type="text" id="social-insta" value="${s.instagram || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="https://instagram.com/yourprofile">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">LinkedIn Profile URL</label>
+                            <input type="text" id="social-li" value="${s.linkedin || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="https://linkedin.com/company/yourcompany">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Twitter / X Profile URL</label>
+                            <input type="text" id="social-tw" value="${s.twitter || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="https://x.com/yourhandle">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">YouTube Profile URL</label>
+                            <input type="text" id="social-yt" value="${s.youtube || ''}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none" placeholder="https://youtube.com/@yourchannel">
+                        </div>
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save Social Links</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveSocialForm(e) {
+            e.preventDefault();
+            appState.socials = {
+                facebook: document.getElementById('social-fb').value,
+                instagram: document.getElementById('social-insta').value,
+                linkedin: document.getElementById('social-li').value,
+                twitter: document.getElementById('social-tw').value,
+                youtube: document.getElementById('social-yt').value
+            };
+            saveState();
+        }
+
+        function renderAdminLeadsManager() {
+            const leads = appState.leads || [];
+            return `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-white">Lead Management</h3>
+                            <p class="text-xs text-gray-400">View and manage form submissions received from website visitors.</p>
+                        </div>
+                        <span class="text-xs bg-brand-gold/20 text-brand-gold font-bold px-3 py-1 rounded-full border border-brand-gold/30">
+                            Total Leads: ${leads.length}
+                        </span>
+                    </div>
+
+                    ${leads.length === 0 ? `
+                        <div class="bg-gray-950 border border-gray-800 rounded-xl p-8 text-center">
+                            <i data-lucide="inbox" class="w-8 h-8 text-gray-600 mx-auto mb-2"></i>
+                            <p class="text-sm font-semibold text-gray-400">No leads received yet.</p>
+                            <p class="text-xs text-gray-600 mt-1">Submitted contact forms will appear here automatically.</p>
+                        </div>
+                    ` : `
+                        <div class="overflow-x-auto border border-gray-800 rounded-xl bg-gray-950">
+                            <table class="w-full text-left text-xs text-gray-300">
+                                <thead class="bg-gray-900 border-b border-gray-800 text-gray-400 uppercase font-semibold">
+                                    <tr>
+                                        <th class="p-3">Date</th>
+                                        <th class="p-3">Name</th>
+                                        <th class="p-3">Contact Details</th>
+                                        <th class="p-3">Service Interested</th>
+                                        <th class="p-3">Message</th>
+                                        <th class="p-3 text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800/60">
+                                    ${leads.map((lead, idx) => `
+                                        <tr class="hover:bg-gray-900/50 transition-colors">
+                                            <td class="p-3 text-gray-400 whitespace-nowrap">${lead.date || 'N/A'}</td>
+                                            <td class="p-3 font-semibold text-white whitespace-nowrap">${lead.name}</td>
+                                            <td class="p-3 whitespace-nowrap">
+                                                <div>${lead.email}</div>
+                                                <div class="text-gray-500">${lead.phone}</div>
+                                            </td>
+                                            <td class="p-3 text-brand-gold whitespace-nowrap">${lead.service}</td>
+                                            <td class="p-3 max-w-xs break-words">${lead.message}</td>
+                                            <td class="p-3 text-right whitespace-nowrap">
+                                                <button onclick="deleteLead(${idx})" class="p-2 bg-rose-950/50 hover:bg-rose-900 text-rose-400 rounded-lg text-xs border border-rose-800/50">
+                                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `}
+                </div>
+            `;
+        }
+
+        function deleteLead(index) {
+            if (confirm("Are you sure you want to delete this lead submission?")) {
+                appState.leads.splice(index, 1);
+                saveState();
+                switchAdminTab('leads');
+            }
+        }
+
+        function renderAdminServicesManager() {
+            return `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-white">Services Manager</h3>
+                            <p class="text-xs text-gray-400">Add, edit, or remove agency services dynamic pages.</p>
+                        </div>
+                        <button onclick="openServiceModal()" class="gold-bg-gradient text-gray-950 font-bold px-4 py-2 rounded-lg text-xs flex items-center gap-1.5">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>Add New Service</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        ${appState.services.map((srv, idx) => `
+                            <div class="bg-gray-950 border border-gray-800 rounded-xl p-4 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-brand-gold/10 text-brand-gold rounded-lg border border-brand-gold/30">
+                                        <i data-lucide="${srv.icon || 'star'}" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">${srv.title}</h4>
+                                        <p class="text-xs text-gray-400">${srv.shortDesc}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="editService(${idx})" class="p-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-xs">
+                                        <i data-lucide="edit-3" class="w-4 h-4"></i>
+                                    </button>
+                                    <button onclick="deleteService(${idx})" class="p-2 bg-rose-950/50 hover:bg-rose-900 text-rose-400 rounded-lg text-xs border border-rose-800/50">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function openServiceModal(srv = null, index = -1) {
+            const isEdit = index >= 0;
+            const title = isEdit ? "Edit Service" : "Add Service";
+            const data = srv || { title: "", icon: "code", shortDesc: "", fullContent: "", features: [], bannerImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" };
+
+            const modalHTML = `
+                <div id="service-edit-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-xl p-6 space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+                        <h3 class="text-base font-bold text-white">${title}</h3>
+                        <form onsubmit="saveServiceItem(event, ${index})" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Service Title</label>
+                                <input type="text" id="edit-srv-title" value="${data.title}" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Lucide Icon Name (e.g., code, share-2, search, target)</label>
+                                <input type="text" id="edit-srv-icon" value="${data.icon}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Short Card Description</label>
+                                <input type="text" id="edit-srv-short" value="${data.shortDesc}" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Full Detail Description</label>
+                                <textarea id="edit-srv-full" rows="3" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">${data.fullContent}</textarea>
+                            </div>
+                            
+                            ${renderImageUploaderHTML('Banner Image (Upload or Link)', 'edit-srv-banner', data.bannerImage)}
+
+                            <div class="flex justify-end gap-2 pt-2">
+                                <button type="button" onclick="closeServiceOverlay()" class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-xs">Cancel</button>
+                                <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-5 py-2 rounded-lg text-xs">Save Service</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            lucide.createIcons();
+        }
+
+        function closeServiceOverlay() {
+            const el = document.getElementById('service-edit-overlay');
+            if (el) el.remove();
+        }
+
+        function saveServiceItem(e, index) {
+            e.preventDefault();
+            const newItem = {
+                id: document.getElementById('edit-srv-title').value.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                title: document.getElementById('edit-srv-title').value,
+                icon: document.getElementById('edit-srv-icon').value || 'star',
+                shortDesc: document.getElementById('edit-srv-short').value,
+                fullContent: document.getElementById('edit-srv-full').value,
+                bannerImage: document.getElementById('edit-srv-banner').value,
+                features: ["Custom Strategy Execution", "Dedicated Account Manager", "Real-Time Performance Dashboard"]
+            };
+
+            if (index >= 0) {
+                appState.services[index] = newItem;
+            } else {
+                appState.services.push(newItem);
+            }
+
+            closeServiceOverlay();
+            saveState();
+            switchAdminTab('services');
+        }
+
+        function editService(index) {
+            openServiceModal(appState.services[index], index);
+        }
+
+        function deleteService(index) {
+            if (confirm("Delete this service page?")) {
+                appState.services.splice(index, 1);
+                saveState();
+                switchAdminTab('services');
+            }
+        }
+
+        function renderAdminBlogManager() {
+            return `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-white">Blog Manager & On-Page SEO</h3>
+                            <p class="text-xs text-gray-400">Publish posts with customized Meta Titles & Keywords.</p>
+                        </div>
+                        <button onclick="openBlogModal()" class="gold-bg-gradient text-gray-950 font-bold px-4 py-2 rounded-lg text-xs flex items-center gap-1.5">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>Create Blog Post</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        ${appState.blogs.map((b, idx) => `
+                            <div class="bg-gray-950 border border-gray-800 rounded-xl p-4 flex items-center justify-between gap-4">
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">${b.title}</h4>
+                                    <p class="text-xs text-gray-400">${b.date} • Keyword: ${b.focusKeyword || 'N/A'}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="deleteBlog(${idx})" class="p-2 bg-rose-950/50 hover:bg-rose-900 text-rose-400 rounded-lg text-xs border border-rose-800/50">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function deleteBlog(idx) {
+            if (confirm("Delete post?")) {
+                appState.blogs.splice(idx, 1);
+                saveState();
+                switchAdminTab('blog');
+            }
+        }
+
+        function openBlogModal() {
+            const modalHTML = `
+                <div id="blog-edit-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-xl p-6 space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+                        <h3 class="text-base font-bold text-white">Create SEO Article</h3>
+                        <form onsubmit="saveBlogItem(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Article Title</label>
+                                <input type="text" id="blog-title" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Focus Keyword</label>
+                                    <input type="text" id="blog-kw" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Title Tag</label>
+                                    <input type="text" id="blog-metatitle" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none">
+                                </div>
+                            </div>
+                            
+                            ${renderImageUploaderHTML('Featured Image (Upload or Link)', 'blog-img', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80')}
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Article Content</label>
+                                <textarea id="blog-content" rows="4" required class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-brand-gold outline-none"></textarea>
+                            </div>
+                            <div class="flex justify-end gap-2 pt-2">
+                                <button type="button" onclick="closeBlogOverlay()" class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-xs">Cancel</button>
+                                <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-5 py-2 rounded-lg text-xs">Publish Article</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            lucide.createIcons();
+        }
+
+        function closeBlogOverlay() {
+            const el = document.getElementById('blog-edit-overlay');
+            if (el) el.remove();
+        }
+
+        function saveBlogItem(e) {
+            e.preventDefault();
+            const newPost = {
+                id: document.getElementById('blog-title').value.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                title: document.getElementById('blog-title').value,
+                slug: document.getElementById('blog-title').value.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                focusKeyword: document.getElementById('blog-kw').value,
+                metaTitle: document.getElementById('blog-metatitle').value,
+                metaDesc: document.getElementById('blog-content').value.substring(0, 120) + "...",
+                image: document.getElementById('blog-img').value,
+                date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                readTime: "4 min read",
+                content: document.getElementById('blog-content').value
+            };
+
+            appState.blogs.unshift(newPost);
+            closeBlogOverlay();
+            saveState();
+            switchAdminTab('blog');
+        }
+
+        function renderAdminFAQsManager() {
+            return `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-white">FAQs Manager</h3>
+                            <p class="text-xs text-gray-400">Update FAQ questions and answers.</p>
+                        </div>
+                        <button onclick="addFAQItem()" class="gold-bg-gradient text-gray-950 font-bold px-4 py-2 rounded-lg text-xs flex items-center gap-1.5">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>Add FAQ</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        ${appState.faqs.map((f, idx) => `
+                            <div class="bg-gray-950 border border-gray-800 rounded-xl p-4 flex items-center justify-between gap-4">
+                                <div class="max-w-md">
+                                    <h4 class="text-xs font-bold text-white">[${f.category}]${f.question}</h4>
+                                    <p class="text-[11px] text-gray-400 truncate">${f.answer}</p>
+                                </div>
+                                <button onclick="deleteFAQ(${idx})" class="p-2 bg-rose-950/50 hover:bg-rose-900 text-rose-400 rounded-lg text-xs border border-rose-800/50">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function addFAQItem() {
+            const q = prompt("Enter FAQ Question:");
+            const a = prompt("Enter FAQ Answer:");
+            if (q && a) {
+                appState.faqs.push({ category: "General", question: q, answer: a });
+                saveState();
+                switchAdminTab('faqs');
+            }
+        }
+
+        function deleteFAQ(idx) {
+            appState.faqs.splice(idx, 1);
+            saveState();
+            switchAdminTab('faqs');
+        }
+
+        function renderAdminAboutManager() {
+            const a = appState.about;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white">About Us Content Editor</h3>
+                    </div>
+                    <form onsubmit="saveAboutForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Headline</label>
+                            <input type="text" id="ab-head" value="${a.heading}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Subheading / Brief</label>
+                            <textarea id="ab-sub" rows="3" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">${a.subheading}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Mission Statement</label>
+                            <textarea id="ab-mission" rows="3" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">${a.mission}</textarea>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Years Experience</label>
+                                <input type="text" id="ab-exp" value="${a.yearsExp}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Campaigns Executed</label>
+                                <input type="text" id="ab-camp" value="${a.campaignsDone}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Revenue Scaled</label>
+                                <input type="text" id="ab-rev" value="${a.revenueGenerated}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                            </div>
+                        </div>
+
+                        ${renderImageUploaderHTML('Team / About Banner Image', 'ab-img', a.teamImage)}
+
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save About Section</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveAboutForm(e) {
+            e.preventDefault();
+            appState.about.heading = document.getElementById('ab-head').value;
+            appState.about.subheading = document.getElementById('ab-sub').value;
+            appState.about.mission = document.getElementById('ab-mission').value;
+            appState.about.yearsExp = document.getElementById('ab-exp').value;
+            appState.about.campaignsDone = document.getElementById('ab-camp').value;
+            appState.about.revenueGenerated = document.getElementById('ab-rev').value;
+            appState.about.teamImage = document.getElementById('ab-img').value;
+            saveState();
+        }
+
+        function renderAdminContactManager() {
+            const c = appState.contact;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white">Contact Info Manager</h3>
+                    </div>
+                    <form onsubmit="saveContactForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number</label>
+                            <input type="text" id="ct-phone" value="${c.phone}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Email Address</label>
+                            <input type="text" id="ct-email" value="${c.email}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">HQ Address</label>
+                            <input type="text" id="ct-address" value="${c.address}" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-white outline-none">
+                        </div>
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save Contact Details</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function saveContactForm(e) {
+            e.preventDefault();
+            appState.contact.phone = document.getElementById('ct-phone').value;
+            appState.contact.email = document.getElementById('ct-email').value;
+            appState.contact.address = document.getElementById('ct-address').value;
+            saveState();
+        }
+
+        function renderAdminImagesManager() {
+            const img = appState.pageImages || DEFAULT_DATA.pageImages;
+            return `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Page Banner Images</h3>
+                        <p class="text-xs text-gray-400">Upload or provide image links for page hero banners across the site.</p>
+                    </div>
+
+                    <form onsubmit="savePageImagesForm(event)" class="space-y-4">
+                        ${renderImageUploaderHTML('Home Hero Banner', 'img-home', img.homeBanner)}
+                        ${renderImageUploaderHTML('About Banner', 'img-about', img.aboutBanner)}
+                        ${renderImageUploaderHTML('Services Banner', 'img-services', img.servicesBanner)}
+                        ${renderImageUploaderHTML('Contact Banner', 'img-contact', img.contactBanner)}
+                        ${renderImageUploaderHTML('FAQs Banner', 'img-faqs', img.faqsBanner)}
+
+                        <button type="submit" class="gold-bg-gradient text-gray-950 font-bold px-6 py-2.5 rounded-lg text-xs hover:opacity-90">Save Banner Images</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function savePageImagesForm(e) {
+            e.preventDefault();
+            appState.pageImages = {
+                homeBanner: document.getElementById('img-home').value,
+                aboutBanner: document.getElementById('img-about').value,
+                servicesBanner: document.getElementById('img-services').value,
+                contactBanner: document.getElementById('img-contact').value,
+                faqsBanner: document.getElementById('img-faqs').value
+            };
+            saveState();
+        }
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            loadState();
+            applySEOInjections();
+            updateUI();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                // If opened in separate tab with ?admin=true parameter, open the login modal first
+                const loginModal = document.getElementById('login-modal');
+                if (loginModal) loginModal.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
